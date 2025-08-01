@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: rootpassword
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -22,10 +22,10 @@ services:
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/golfdb
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/golfdb?characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
-      SPRING_PROFILES_ACTIVE: prod
 
 volumes:
   mysql-data:
